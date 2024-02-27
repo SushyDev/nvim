@@ -1,13 +1,10 @@
--- Fuzzy Finder (files, lsp, etc)
--- See `:help telescope.builtin`
-
 return {
   {
     'nvim-telescope/telescope-fzf-native.nvim',
     build = 'make',
-    cond = function()
-      return vim.fn.executable 'make' == 1
-    end,
+    -- cond = function()
+    --   return vim.fn.executable 'make' == 1
+    -- end,
   },
   {
     'nvim-telescope/telescope.nvim',
@@ -36,7 +33,7 @@ return {
       pcall(require('telescope').load_extension('fzf'))
 
       -- Enable telescope tailwindcss (tailiscope)
-      pcall(require('telescope').load_extension('tailiscope'))
+      -- pcall(require('telescope').load_extension('tailiscope'))
 
       -- Keymaps
       vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
