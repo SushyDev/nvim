@@ -16,7 +16,8 @@ return {
         suggestion = {
             auto_trigger = true,
             keymap = {
-                accept = "<C-L>"
+                accept = "<C-K>",
+                accept_word = "<C-L>",
             }
         },
         copilot_node_command = get_path(),
