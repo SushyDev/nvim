@@ -20,8 +20,12 @@ return {
         }
     },
     {
-        'rcarriga/nvim-dap-ui',
+        'mfussenegger/nvim-dap',
+        dependencies = {
+            'rcarriga/nvim-dap-ui',
+        },
         config = function()
+            local dap = require('dap')
             local dapui = require('dapui')
 
             dapui.setup({
@@ -36,16 +40,6 @@ return {
                 },
             })
 
-            -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
-            vim.keymap.set('n', '<F7>', dapui.toggle, { desc = 'Debug: See last session result.' })
-        end,
-    },
-    {
-        'mfussenegger/nvim-dap',
-        config = function()
-            local dap = require('dap')
-            local dapui = require('dapui')
-
             -- Basic debugging keymaps, feel free to change to your liking!
             vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
             vim.keymap.set('n', '<F1>', dap.step_into, { desc = 'Debug: Step Into' })
@@ -58,6 +52,9 @@ return {
             dap.listeners.before.event_terminated['dapui_config'] = dapui.close
             dap.listeners.before.event_exited['dapui_config'] = dapui.close
             dap.listeners.before.disconnect['dapui_config'] = dapui.close
+
+            -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
+            vim.keymap.set('n', '<F7>', dapui.toggle, { desc = 'Debug: See last session result.' })
 
             dap.configurations.php = dap.configurations.php or {}
             dap.configurations.php = {

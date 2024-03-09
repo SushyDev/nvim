@@ -43,7 +43,8 @@ return {
         },
         config = function()
             local lsp_zero = require('lsp-zero')
-            -- local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+            local lspconfig = require('lspconfig')
+            local mason_lspconfig = require('mason-lspconfig')
 
             lsp_zero.on_attach(function(_, bufnr)
                 lsp_zero.default_keymaps({
@@ -53,29 +54,21 @@ return {
                 })
             end)
 
-            require('mason-lspconfig').setup({
+            mason_lspconfig.setup({
                 handlers = {
                     lsp_zero.default_setup,
                 }
             })
 
-            -- require('lspconfig').phpactor.setup({
-            --     capabilities = lsp_capabilities,
-            --     filetypes = { 'php' },
-            -- })
-
-            require('lspconfig').html.setup({
-                -- capabilities = lsp_capabilities,
-                filetypes = { 'html', 'twig', 'php' },
+            lspconfig.html.setup({
+                filetypes = { 'html', 'twig', 'php', 'templ' },
             })
 
-            require('lspconfig').tsserver.setup({
-                -- capabilities = lsp_capabilities,
+            lspconfig.tsserver.setup({
                 filetypes = { 'javascript', 'typescript', 'php' },
             })
 
-            require('lspconfig').lua_ls.setup({
-                -- capabilities = lsp_capabilities,
+            lspconfig.lua_ls.setup({
                 settings = {
                     Lua = {
                         runtime = {
