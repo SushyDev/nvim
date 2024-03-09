@@ -5,10 +5,6 @@ return {
 
     },
     {
-        "zbirenbaum/copilot-cmp",
-        opts = {},
-    },
-    {
         'hrsh7th/nvim-cmp',
         dependencies = {
             'hrsh7th/cmp-nvim-lsp',
@@ -27,7 +23,7 @@ return {
                     ['<C-s>'] = cmp.mapping.confirm({ select = true }),
                 }),
                 sources = {
-                    { name = "copilot" },
+                    { name = "copilot" }, -- if copilot-cmp is installed
                     { name = "nvim_lsp" },
                     { name = "buffer" },
                 }

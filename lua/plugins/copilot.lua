@@ -21,5 +21,9 @@ return {
             }
         },
         copilot_node_command = get_path(),
-    }
+    },
+    {
+        "zbirenbaum/copilot-cmp",
+        opts = {},
+    },
 }
