@@ -61,7 +61,7 @@ return {
             })
 
             lspconfig.tsserver.setup({
-                filetypes = { 'javascript', 'typescript', 'php' },
+                filetypes = { 'javascript', 'typescript' },
             })
 
             lspconfig.lua_ls.setup({
