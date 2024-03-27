@@ -8,6 +8,7 @@ return {
         'hrsh7th/nvim-cmp',
         dependencies = {
             'hrsh7th/cmp-nvim-lsp',
+            "L3MON4D3/LuaSnip",
         },
         config = function()
             local cmp = require('cmp')
@@ -25,7 +26,6 @@ return {
                 sources = {
                     { name = "copilot" }, -- if copilot-cmp is installed
                     { name = "nvim_lsp" },
-                    { name = "buffer" },
                 }
             })
         end
@@ -62,6 +62,10 @@ return {
 
             lspconfig.tsserver.setup({
                 filetypes = { 'javascript', 'typescript' },
+            })
+
+            lspconfig.cssls.setup({
+                filetypes = { 'html', 'css', 'scss', 'less', 'twig' },
             })
 
             lspconfig.lua_ls.setup({
