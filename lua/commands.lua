@@ -2,7 +2,7 @@ local function modulePath()
     local path = vim.fn.expand("%:h")
     local match = nil
 
-    match = string.match(path, ".*[A-Z][a-z]*_[A-Z][a-z]*")
+    match = string.match(path, ".*[A-Z][a-z]*_?[A-Z][a-z]*")
     if match then
         return match
     end

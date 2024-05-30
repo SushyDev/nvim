@@ -19,15 +19,19 @@ return {
                 function(config)
                     require('mason-nvim-dap').default_setup(config)
                 end,
-                php = function(config)
-                    for _, cnfg in pairs(config.configurations) do
-                        cnfg.port = 9003
-                        cnfg.pathMappings = {
+                php = function(package)
+                    for _, config in pairs(package.configurations) do
+                        config.port = 9003
+                        config.pathMappings = {
                             ["/var/www/html"] = "${workspaceFolder}"
                         }
                     end
 
-                    require('mason-nvim-dap').default_setup(config)
+                    local command = package.adapters.command
+                    package.adapters.command = "pkgx"
+                    package.adapters.args = { '+node', '--', command }
+
+                    require('mason-nvim-dap').default_setup(package)
                 end
             },
         },

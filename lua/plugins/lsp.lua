@@ -42,6 +42,12 @@ return {
             local lspconfig = require('lspconfig')
             local mason_lspconfig = require('mason-lspconfig')
 
+            lspconfig.util.on_setup = lspconfig.util.add_hook_before(lspconfig.util.on_setup, function(config)
+                local cmd = config.cmd
+                table.insert(cmd, 1, 'pkgx')
+                config.cmd = cmd
+            end)
+
             lsp_zero.on_attach(function(_, bufnr)
                 lsp_zero.default_keymaps({
                     buffer = bufnr,
@@ -83,6 +89,26 @@ return {
                             }
                         }
                     }
+                }
+            })
+        end
+    },
+    {
+        'mhartington/formatter.nvim',
+        config = function()
+            local formatter = require('formatter')
+
+            formatter.setup({
+                filetype = {
+                    php = {
+                        function()
+                            return {
+                                exe = "prettierd",
+                                args = { vim.api.nvim_buf_get_name(0) },
+                                stdin = true
+                            }
+                        end
+                    },
                 }
             })
         end
