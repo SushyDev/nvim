@@ -66,7 +66,7 @@ return {
                 filetypes = { 'html', 'twig', 'php', 'templ' },
             })
 
-            lspconfig.tsserver.setup({
+            lspconfig.ts_ls.setup({
                 filetypes = { 'javascript', 'typescript' },
             })
 
