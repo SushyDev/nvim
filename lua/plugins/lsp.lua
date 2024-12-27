@@ -94,21 +94,13 @@ return {
         end
     },
     {
-        'mhartington/formatter.nvim',
+        'stevearc/conform.nvim',
         config = function()
-            local formatter = require('formatter')
+            local conform = require('conform')
 
-            formatter.setup({
-                filetype = {
-                    php = {
-                        function()
-                            return {
-                                exe = "prettierd",
-                                args = { vim.api.nvim_buf_get_name(0) },
-                                stdin = true
-                            }
-                        end
-                    },
+            conform.setup({
+                formatters_by_ft = {
+                    go = { { "gofmt" } },
                 }
             })
         end
