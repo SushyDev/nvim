@@ -29,3 +29,7 @@ vim.opt.autoindent = true
 -- Prevent line wrap
 -- set tw=0
 vim.cmd('set tw=0')
+
+-- Set whitespace characters
+vim.opt.list = true
+vim.opt.listchars = "space:·,tab:→ ,eol:↴"
