@@ -9,7 +9,7 @@ return {
                     accept_word = "<C-L>",
                 }
             },
-            copilot_node_command = 'pkgx',
+            copilot_node_command = 'node',
         },
     },
     {
