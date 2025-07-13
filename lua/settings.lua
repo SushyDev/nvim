@@ -24,11 +24,12 @@ vim.o.scrolloff = 999
 -- vim.opt.softtabstop = 4
 -- vim.opt.shiftwidth = 4
 -- vim.opt.expandtab = true
-vim.opt.autoindent = true
+-- vim.opt.autoindent = true
 
 -- Prevent line wrap
 -- set tw=0
-vim.cmd('set tw=0')
+-- vim.cmd('set tw=0')
+vim.opt.tw = 0
 
 -- Set whitespace characters
 vim.opt.list = true
