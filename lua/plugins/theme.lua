@@ -1,16 +1,30 @@
 return {
-	'sekke276/dark_flat.nvim',
+	'slugbyte/lackluster.nvim',
 	priority = 1000,
 	opts = {
 		colors = {
-			bg = '#000000',
 			black = '#000000',
+			white = '#FFFFFF',
+			dark_gray = '#676E7B',
+		},
+		tweak_syntax = {
+			string = "#8A8A8A",
+			string_escape = "default",
+			comment = "#585858",
+			builtin = "default", -- builtin modules and functions
+			type = "#AC396D",
+			keyword = "#FFFFFF",
+			keyword_return = "default",
+			keyword_exception = "default",
+		},
+		tweak_background = {
+			normal = '#000000',
 		}
 	},
 	config = function(_, opts)
-		require('dark_flat').setup(opts)
+		require('lackluster').setup(opts)
 
-		vim.cmd.colorscheme 'dark_flat'
+		vim.cmd.colorscheme 'lackluster-mint'
 
 		vim.api.nvim_set_hl(0, 'StatusLine', {
 			bg = opts.colors.black,
@@ -19,7 +33,7 @@ return {
 
 		vim.api.nvim_set_hl(0, 'StatusLineNC', {
 			bg = opts.colors.black,
-			fg = "#676E7B",
+			fg = opts.colors.dark_gray,
 		})
 	end,
 }
