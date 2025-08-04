@@ -52,6 +52,13 @@ return {
 			require('plugins.lsp.config.lua_ls')
 			require('plugins.lsp.config.eslint')
 			require('plugins.lsp.config.rust_analyzer')
+
+			-- Alias filetypes
+
+			vim.api.nvim_create_autocmd({ "FileType" }, {
+				pattern = "zsh",
+				command = "setlocal filetype=bash",
+			})
 		end
 	},
 }
