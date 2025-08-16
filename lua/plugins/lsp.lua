@@ -1,15 +1,17 @@
 return {
 	{
 		'williamboman/mason.nvim',
+		cmd = { 'Mason', 'MasonUpdate' },
 		opts = {},
 
 	},
 	{
 		'mason-org/mason-lspconfig.nvim',
 		branch = 'main',
+		event = { 'BufReadPre', 'BufNewFile' },
 		dependencies = {
-			'neovim/nvim-lspconfig',
-			'williamboman/mason.nvim',
+			{ 'neovim/nvim-lspconfig', event = { 'BufReadPre', 'BufNewFile' } },
+			{ 'williamboman/mason.nvim', cmd = { 'Mason', 'MasonUpdate' } },
 		},
 		config = function()
 			vim.keymap.set('n', '<F4>', vim.lsp.buf.code_action, { desc = 'Code action' })

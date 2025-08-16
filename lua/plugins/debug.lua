@@ -1,6 +1,7 @@
 return {
 	{
 		'jay-babu/mason-nvim-dap.nvim',
+		cmd = { 'DapInstall', 'DapUninstall' },
 		opts = {
 			automatic_setup = true,
 			handlers = {
@@ -27,8 +28,17 @@ return {
 	},
 	{
 		'mfussenegger/nvim-dap',
+		keys = {
+			{ '<F55>', function() require('dapui').toggle() end, desc = 'Debug: Toggle UI' },
+			{ '<F49>', function() require('dap').step_into() end, desc = 'Debug: Step Into' },
+			{ '<F50>', function() require('dap').step_over() end, desc = 'Debug: Step Over' },
+			{ '<F51>', function() require('dap').step_out() end, desc = 'Debug: Step Out' },
+			{ '<F5>', function() require('dap').continue() end, desc = 'Debug: Start/Continue' },
+			{ '<leader>b', function() require('dap').toggle_breakpoint() end, desc = 'Debug: Toggle Breakpoint' },
+			{ '<leader>B', function() require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, desc = 'Debug: Set Breakpoint' },
+		},
 		dependencies = {
-			'rcarriga/nvim-dap-ui',
+			{ 'rcarriga/nvim-dap-ui', module = 'dapui' },
 			'nvim-neotest/nvim-nio',
 		},
 		config = function()

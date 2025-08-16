@@ -2,11 +2,29 @@ return {
 	{
 		'nvim-telescope/telescope-fzf-native.nvim',
 		build = 'make',
+		cond = function()
+			return vim.fn.executable('make') == 1
+		end,
+		lazy = true,
 	},
 	{
 		'nvim-telescope/telescope.nvim',
 		branch = '0.1.x',
-		dependencies = { 'nvim-lua/plenary.nvim' },
+		cmd = 'Telescope',
+		keys = {
+			{ '<leader>?', function() require('telescope.builtin').oldfiles() end, desc = '[?] Find recently opened files' },
+			{ '<leader><space>', function() require('telescope.builtin').buffers() end, desc = '[ ] Find existing buffers' },
+			{ '<leader>gf', function() require('telescope.builtin').git_files() end, desc = 'Search [G]it [F]iles' },
+			{ '<leader>sf', function() require('telescope.builtin').find_files() end, desc = '[S]earch [F]iles' },
+			{ '<leader>sh', function() require('telescope.builtin').help_tags() end, desc = '[S]earch [H]elp' },
+			{ '<leader>sw', function() require('telescope.builtin').grep_string() end, desc = '[S]earch current [W]ord' },
+			{ '<leader>sg', function() require('telescope.builtin').live_grep() end, desc = '[S]earch by [G]rep' },
+			{ '<leader>sd', function() require('telescope.builtin').diagnostics() end, desc = '[S]earch [D]iagnostics' },
+			{ '<leader>sag', function() require('telescope.builtin').live_grep({ additional_args = { '-uu' } }) end, desc = '[S]earch [A]ll [G]rep' },
+			{ '<leader>svf', function() require('telescope.builtin').find_files({ search_dirs = { 'vendor' }, no_ignore = true }) end, desc = '[S]earch [V]endor [F]iles' },
+			{ '<leader>svg', function() require('telescope.builtin').live_grep({ search_dirs = { 'vendor' }, additional_args = { '-uu' } }) end, desc = '[S]earch [V]endor [G]rep' },
+		},
+		dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-fzf-native.nvim' },
 		config = function()
 			local telescope = require('telescope')
 			local telescope_builtin = require('telescope.builtin')

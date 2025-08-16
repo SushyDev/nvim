@@ -1,8 +1,10 @@
 return {
 	'nvim-treesitter/nvim-treesitter',
+	priority = 900,
+	event = { 'BufReadPost', 'BufNewFile' },
 	dependencies = {
-		'nvim-treesitter/nvim-treesitter-textobjects',
-		'nvim-treesitter/nvim-treesitter-context',
+		{ 'nvim-treesitter/nvim-treesitter-textobjects', event = { 'BufReadPost', 'BufNewFile' } },
+		{ 'nvim-treesitter/nvim-treesitter-context', event = { 'BufReadPost', 'BufNewFile' } },
 	},
 	build = ':TSUpdate',
 	opts = {
