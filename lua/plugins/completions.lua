@@ -88,7 +88,7 @@ return {
 		config = function(_, opts)
 			require('blink.cmp').setup(opts)
 
-			require('plugins.completions.snippets.copilot')
+			require('plugins.completions.snippets.blink_copilot')
 		end,
 	},
 }

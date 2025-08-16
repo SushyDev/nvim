@@ -48,8 +48,6 @@ return {
 		}
 	},
 	config = function(_, opts)
-		-- require('dark_flat').setup(opts)
-
 		vim.cmd.colorscheme 'onedark_dark'
 
 		vim.api.nvim_set_hl(0, 'StatusLine', {

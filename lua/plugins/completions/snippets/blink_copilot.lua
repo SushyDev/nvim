@@ -1,7 +1,7 @@
-local copilot_suggestion = require("copilot.suggestion")
+local copilot = require("copilot.suggestion")
 
 local function hide_copilot()
-	copilot_suggestion.dismiss()
+	copilot.dismiss()
 	vim.b.copilot_suggestion_hidden = true
 end
 
@@ -16,5 +16,5 @@ vim.api.nvim_create_autocmd('User', {
 
 vim.api.nvim_create_autocmd('User', {
 	pattern = 'BlinkCmpMenuClose',
-	callback = show_copilot
+	callback = show_copilot,
 })
