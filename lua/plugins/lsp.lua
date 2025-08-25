@@ -14,9 +14,13 @@ return {
 			{ 'williamboman/mason.nvim', cmd = { 'Mason', 'MasonUpdate' } },
 		},
 		config = function()
-			vim.keymap.set('n', '<F4>', vim.lsp.buf.code_action, { desc = 'Code action' })
-			vim.keymap.set({ 'n', 'x'}, '<F3>', function() vim.lsp.buf.format({ async = true }) end, { desc = 'Format selection' })
-			vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, { desc = 'Rename symbol' })
+			local command_code_action = '<cmd>lua vim.lsp.buf.code_action()<cr>'
+			local command_rename = '<cmd>lua vim.lsp.buf.rename()<cr>'
+			local command_fmt = '<cmd>lua vim.lsp.buf.format({async = true})<cr>'
+
+			vim.keymap.set('n', '<F4>', command_code_action { desc = 'Code action' })
+			vim.keymap.set('n', '<F2>', command_rename { desc = 'Rename symbol' })
+			vim.keymap.set({ 'n', 'x'}, '<F3>', command_fmt { desc = 'Format selection' })
 
 			local mason_lspconfig = require('mason-lspconfig')
 			mason_lspconfig.setup({
@@ -35,6 +39,11 @@ return {
 
 			vim.api.nvim_create_autocmd({ "FileType" }, {
 				pattern = "zsh",
+				command = "setlocal filetype=bash",
+			})
+
+			vim.api.nvim_create_autocmd({ "FileType" }, {
+				pattern = "dosbatch",
 				command = "setlocal filetype=bash",
 			})
 		end

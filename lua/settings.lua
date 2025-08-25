@@ -19,7 +19,11 @@ vim.opt.smartindent = true
 
 -- Whilespace characters
 vim.opt.list = true -- Show whitespace characters
-vim.opt.listchars = "space:·,tab:→ ,eol:↴"
+vim.opt.listchars = {
+	eol = "↴",
+	space = "·",
+	tab = "→ ",
+}
 
 -- Default indentation
 -- vim.opt.tabstop = 4
