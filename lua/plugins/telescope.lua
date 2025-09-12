@@ -9,7 +9,7 @@ return {
 	},
 	{
 		'nvim-telescope/telescope.nvim',
-		branch = '0.1.x',
+		event = 'VimEnter',
 		cmd = 'Telescope',
 		keys = {
 			{ '<leader>?', function() require('telescope.builtin').oldfiles() end, desc = '[?] Find recently opened files' },
@@ -24,7 +24,17 @@ return {
 			{ '<leader>svf', function() require('telescope.builtin').find_files({ search_dirs = { 'vendor' }, no_ignore = true }) end, desc = '[S]earch [V]endor [F]iles' },
 			{ '<leader>svg', function() require('telescope.builtin').live_grep({ search_dirs = { 'vendor' }, additional_args = { '-uu' } }) end, desc = '[S]earch [V]endor [G]rep' },
 		},
-		dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-fzf-native.nvim' },
+		dependencies = { 
+			'nvim-lua/plenary.nvim',
+			{ 
+				'nvim-telescope/telescope-fzf-native.nvim',
+				build = 'make',
+				cond = function()
+					return vim.fn.executable 'make' == 1
+				end,
+			},
+
+		},
 		config = function()
 			local telescope = require('telescope')
 			local telescope_builtin = require('telescope.builtin')
@@ -48,7 +58,8 @@ return {
 			}
 
 			-- Enable telescope fzf native, if installed
-			telescope.load_extension('fzf')
+			pcall(require('telescope').load_extension, 'fzf')
+
 
 			-- Enable telescope tailwindcss (tailiscope)
 			-- pcall(require('telescope').load_extension('tailiscope'))
