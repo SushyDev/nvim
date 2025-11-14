@@ -35,13 +35,14 @@ return {
 				automatic_enable = true,
 			})
 
-			require('plugins.lsp.config.gopls')
-			require('plugins.lsp.config.html')
-			require('plugins.lsp.config.vtsls')
-			require('plugins.lsp.config.cssls')
-			require('plugins.lsp.config.lua_ls')
-			require('plugins.lsp.config.eslint')
-			require('plugins.lsp.config.rust_analyzer')
+		require('plugins.lsp.config.gopls')
+		require('plugins.lsp.config.html')
+		require('plugins.lsp.config.vtsls')
+		require('plugins.lsp.config.cssls')
+		require('plugins.lsp.config.lua_ls')
+		require('plugins.lsp.config.eslint')
+		require('plugins.lsp.config.rust_analyzer')
+		require('plugins.lsp.config.elixirls')
 
 			-- Alias filetypes
 
