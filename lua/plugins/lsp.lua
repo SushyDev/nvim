@@ -43,6 +43,7 @@ return {
 		require('plugins.lsp.config.eslint')
 		require('plugins.lsp.config.rust_analyzer')
 		require('plugins.lsp.config.elixirls')
+		require('plugins.lsp.config.emmet_ls')
 
 			-- Alias filetypes
 
