@@ -44,6 +44,8 @@ return {
 		require('plugins.lsp.config.rust_analyzer')
 		require('plugins.lsp.config.elixirls')
 		require('plugins.lsp.config.emmet_ls')
+		require('plugins.lsp.config.tailwindcss')
+		require('plugins.lsp.config.prettier')
 
 			-- Alias filetypes
 
