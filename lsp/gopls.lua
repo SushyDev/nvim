@@ -1,4 +1,4 @@
-vim.lsp.config("gopls", {
+return {
 	settings = {
 		gopls = {
 			hints = {
@@ -17,4 +17,4 @@ vim.lsp.config("gopls", {
 			staticcheck = true,
 		}
 	},
-})
+}

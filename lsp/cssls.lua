@@ -1,3 +1,3 @@
-vim.lsp.config("cssls", {
+return {
 	filetypes = { 'html', 'css', 'scss', 'less', 'twig' },
-})
+}

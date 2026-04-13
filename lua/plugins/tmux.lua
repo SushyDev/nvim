@@ -1,12 +1,8 @@
-return {
-	'aserowy/tmux.nvim',
-	cond = function()
-		return os.getenv('TMUX') ~= nil
-	end,
-	event = 'VeryLazy',
-	opts = {
+-- tmux.nvim: only load inside a tmux session
+if os.getenv('TMUX') ~= nil then
+	require('tmux').setup({
 		copy_sync = {
 			redirect_to_clipboard = true,
-		}
-	}
-}
+		},
+	})
+end

@@ -1,5 +1,5 @@
-vim.lsp.config("vtsls", {
-	filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+return {
+	filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
 	settings = {
 		vtsls = {
 			tsserver = {
@@ -18,4 +18,4 @@ vim.lsp.config("vtsls", {
 			})
 		end
 	end,
-})
+}

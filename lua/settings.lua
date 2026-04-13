@@ -32,6 +32,10 @@ vim.opt.listchars = {
 -- vim.opt.expandtab = true
 -- vim.opt.autoindent = true
 
+-- Completion (native, Neovim 0.12+)
+vim.o.autocomplete = true
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect', 'popup' }
+
 -- Miscellaneous
 vim.g.netrw_banner = 0 -- Remove netrw banner
 vim.opt.mouse = '' -- Disable mouse mode

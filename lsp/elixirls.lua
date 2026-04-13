@@ -1,8 +1,8 @@
-vim.lsp.config("elixirls", {
+return {
 	settings = {
 		elixirLS = {
 			dialyzerEnabled = true,
 			fetchDeps = false,
-		}
+		},
 	},
-})
+}

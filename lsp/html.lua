@@ -1,3 +1,3 @@
-vim.lsp.config("html", {
+return {
 	filetypes = { 'html', 'twig', 'php', 'templ' },
-})
+}

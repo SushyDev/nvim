@@ -1,23 +1,49 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+-- Native package manager (Neovim 0.12+)
+-- load = true: run packadd for all plugins immediately so require() works below
+vim.pack.add({
+	-- Mason: tool installer
+	{ src = 'https://github.com/williamboman/mason.nvim' },
+	{ src = 'https://github.com/mason-org/mason-lspconfig.nvim' },
+	{ src = 'https://github.com/neovim/nvim-lspconfig' },
 
-if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable",
-		lazypath,
-	})
-end
+	-- Git
+	{ src = 'https://github.com/tpope/vim-fugitive' },
+	{ src = 'https://github.com/lewis6991/gitsigns.nvim' },
 
-vim.opt.rtp:prepend(lazypath)
+	-- Telescope
+	{ src = 'https://github.com/nvim-lua/plenary.nvim' },
+	{ src = 'https://github.com/nvim-telescope/telescope.nvim' },
+	{ src = 'https://github.com/nvim-telescope/telescope-fzf-native.nvim' },
 
-require('lazy').setup({
-	spec = {
-		{ import = 'plugins' },
-	},
-	change_detection = {
-		notify = false
-	},
-})
+	-- Theme
+	{ src = 'https://github.com/maxmx03/fluoromachine.nvim' },
+
+	-- Treesitter
+	{ src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
+	{ src = 'https://github.com/nvim-treesitter/nvim-treesitter-textobjects' },
+	{ src = 'https://github.com/nvim-treesitter/nvim-treesitter-context' },
+
+	-- Copilot (inline ghost text only)
+	{ src = 'https://github.com/zbirenbaum/copilot.lua' },
+
+	-- Debug
+	{ src = 'https://github.com/mfussenegger/nvim-dap' },
+	{ src = 'https://github.com/rcarriga/nvim-dap-ui' },
+	{ src = 'https://github.com/nvim-neotest/nvim-nio' },
+	{ src = 'https://github.com/jay-babu/mason-nvim-dap.nvim' },
+
+	-- UI / Navigation
+	{ src = 'https://github.com/aserowy/tmux.nvim' },
+	{ src = 'https://github.com/folke/which-key.nvim' },
+}, { load = true })
+
+-- Run plugin setup files
+require('plugins.theme')
+require('plugins.git')
+require('plugins.telescope')
+require('plugins.treesitter')
+require('plugins.copilot')
+require('plugins.lsp')
+require('plugins.debug')
+require('plugins.tmux')
+require('plugins.whichkey')
