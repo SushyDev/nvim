@@ -25,6 +25,10 @@ vim.pack.add({
 
 	-- Copilot (inline ghost text only)
 	{ src = 'https://github.com/zbirenbaum/copilot.lua' },
+	{
+		src = "https://www.github.com/olimorris/codecompanion.nvim",
+		version = vim.version.range("^19.0.0")
+	},
 
 	-- Debug
 	{ src = 'https://github.com/mfussenegger/nvim-dap' },
@@ -47,3 +51,4 @@ require('plugins.lsp')
 require('plugins.debug')
 require('plugins.tmux')
 require('plugins.whichkey')
+require('plugins.codecompanion')
