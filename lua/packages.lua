@@ -30,6 +30,9 @@ vim.pack.add({
 		version = vim.version.range("^19.0.0")
 	},
 
+	-- Indentation detection
+	{ src = 'https://github.com/tpope/vim-sleuth' },
+
 	-- Debug
 	{ src = 'https://github.com/mfussenegger/nvim-dap' },
 	{ src = 'https://github.com/rcarriga/nvim-dap-ui' },
