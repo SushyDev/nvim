@@ -32,6 +32,7 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.modeline = true -- Respect modelines in files
+vim.o.exrc = true -- Load project-local .nvim.lua (prompts for trust)
 
 -- Completion (native, Neovim 0.12+)
 vim.o.autocomplete = true
