@@ -1,8 +1,13 @@
--- tailwindcss: extend default filetypes with heex
+-- tailwindcss: extend default filetypes with heex and elixir (~H sigils in .ex files)
 -- Conditionally enabled in plugins/lsp.lua based on executable availability
 return {
 	filetypes = {
 		'html', 'css', 'scss', 'sass', 'less', 'javascriptreact', 'typescriptreact',
-		'vue', 'svelte', 'astro', 'twig', 'blade', 'heex',
+		'vue', 'svelte', 'astro', 'twig', 'blade', 'heex', 'elixir',
+	},
+	settings = {
+		tailwindCSS = {
+			includeLanguages = { elixir = 'html-eex', heex = 'html-eex' },
+		},
 	},
 }

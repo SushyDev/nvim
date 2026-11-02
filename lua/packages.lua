@@ -23,13 +23,6 @@ vim.pack.add({
 	{ src = 'https://github.com/nvim-treesitter/nvim-treesitter-textobjects' },
 	{ src = 'https://github.com/nvim-treesitter/nvim-treesitter-context' },
 
-	-- Copilot (inline ghost text only)
-	{ src = 'https://github.com/zbirenbaum/copilot.lua' },
-	{
-		src = "https://www.github.com/olimorris/codecompanion.nvim",
-		version = vim.version.range("^19.0.0")
-	},
-
 	-- Indentation detection
 	{ src = 'https://github.com/tpope/vim-sleuth' },
 
@@ -49,9 +42,7 @@ require('plugins.theme')
 require('plugins.git')
 require('plugins.telescope')
 require('plugins.treesitter')
-require('plugins.copilot')
 require('plugins.lsp')
 require('plugins.debug')
 require('plugins.tmux')
 require('plugins.whichkey')
-require('plugins.codecompanion')
