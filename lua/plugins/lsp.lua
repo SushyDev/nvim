@@ -2,8 +2,6 @@
 -- Server configs live in lsp/*.lua (auto-loaded by Neovim via vim.lsp.enable)
 -- mason-lspconfig handles automatic_enable for mason-installed servers
 
-vim.cmd('packadd nvim-lspconfig')
-
 require('mason').setup()
 
 require('mason-lspconfig').setup({
@@ -30,6 +28,7 @@ vim.keymap.set({ 'n', 'x' }, '<F3>', function()
 	vim.lsp.buf.format({ async = true })
 end, { desc = 'Format selection' })
 
+-- Builtin K -> hover skips buffers whose ftplugin sets 'keywordprg' (go, sh), so map it ourselves
 vim.api.nvim_create_autocmd('LspAttach', {
 	group = vim.api.nvim_create_augroup('lsp_keymaps', { clear = true }),
 	callback = function(ev)

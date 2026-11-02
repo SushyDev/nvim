@@ -8,7 +8,7 @@ vim.api.nvim_create_autocmd('FileType', {
 	callback = function(ev)
 		local ok = pcall(vim.treesitter.start, ev.buf)
 		if ok then
-			vim.bo[ev.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			vim.bo[ev.buf].indentexpr = require('nvim-treesitter').indentexpr
 		end
 	end,
 })

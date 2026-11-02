@@ -58,9 +58,8 @@ Custom Neovim configuration with extensive plugin ecosystem for efficient text e
 - Whitespace characters displayed
 - Mouse disabled
 - Swap file disabled
-- Scrolloff set to 999 for cursor centering
+- Scrolloff set to 999 (with `scrolloffpad`) for cursor centering, including at end of file
 - Line wrapping disabled
-- Netrw banner removed
 
 ### Keymaps
 - Window resizing: `<M-h/j/k/l>`
@@ -71,9 +70,16 @@ Custom Neovim configuration with extensive plugin ecosystem for efficient text e
 - LSP: `<F4>` code actions, `<F2>` rename, `<F3>` format
 - Telescope: Various `<leader>` keymaps for search
 - Debugging: `<F5>` continue, `<F49-51>` stepping, `<leader>b` breakpoints
+- Sidebar: `<leader>e` toggles the file sidebar
+
+### File Sidebar
+Built on Neovim 0.13's native directory browser (`:help dir`), no plugin.
+- `<leader>e` toggles a fixed-width sidebar on the current file's directory
+- `<CR>` on a file opens it in the editor window; on a directory, `-` and `R` navigate/reload inside the sidebar
+- The sidebar is pinned (`winpinned`), so `:only` keeps it; quitting the last editor window closes it
 
 ### Custom Commands
-- **Tree**: Opens netrw for module-specific directories
+- **Tree [dir]**: Opens the sidebar on {dir}, or on the current file's module directory
 
 ### Theme
 - Fluoromachine theme with transparent background
@@ -89,7 +95,7 @@ Custom Neovim configuration with extensive plugin ecosystem for efficient text e
 
 ### Required
 
-- **neovim** - Text editor
+- **neovim 0.13+** - Text editor (nightly until 0.13 is released; installed from neovim-nightly-overlay by the dotfiles flake)
 - **nodejs** - Required for LSP servers (TypeScript/JavaScript/Vue), ESLint, CSS/HTML LSP, and GitHub Copilot
 - **ripgrep (rg)** - Required for Telescope live grep functionality
 - **make** - Required to build telescope-fzf-native plugin

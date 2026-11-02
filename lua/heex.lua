@@ -51,7 +51,7 @@ local function tab()
 	local col = vim.api.nvim_win_get_cursor(0)[2]
 	local before = vim.api.nvim_get_current_line():sub(1, col)
 	if before:match('%S$') and in_heex() and emmet_expand() then return end
-	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Tab>', true, false, true), 'ni', false)
+	vim.api.nvim_feedkeys(vim.keycode('<Tab>'), 'ni', false)
 end
 
 vim.api.nvim_create_autocmd('FileType', {

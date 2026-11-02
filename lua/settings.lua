@@ -39,8 +39,8 @@ vim.o.autocomplete = true
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect', 'popup' }
 
 -- Miscellaneous
-vim.g.netrw_banner = 0 -- Remove netrw banner
 vim.opt.mouse = '' -- Disable mouse mode
 vim.opt.swapfile = false -- Disable swap
 vim.opt.scrolloff = 999 -- Center cursors using scrolloff
+vim.opt.scrolloffpad = 1 -- Keep centering at the end of the file too
 vim.opt.wrap = false -- Disable line wrap

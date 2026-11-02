@@ -85,7 +85,7 @@ vim.keymap.set('i', '<C-j>', expand, { desc = 'Expand snippet' })
 
 -- Show snippets in the native completion popup (autocomplete and <C-n>/<C-p>).
 -- The popup inserts the trigger word; accepting it (<C-y> or <C-s>) expands the snippet.
-function _G.SnippetComplete(findstart, base)
+local function complete(findstart, base)
 	local snippets = by_ft[vim.bo.filetype] or {}
 	if findstart == 1 then
 		local col = vim.api.nvim_win_get_cursor(0)[2]
@@ -105,7 +105,7 @@ end
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = vim.tbl_keys(by_ft),
 	callback = function(ev)
-		vim.bo[ev.buf].completefunc = 'v:lua.SnippetComplete'
+		vim.bo[ev.buf].completefunc = complete
 		if not vim.startswith(vim.bo[ev.buf].complete, 'F,') then
 			vim.bo[ev.buf].complete = 'F,' .. vim.bo[ev.buf].complete
 		end
